@@ -7,9 +7,9 @@ def quiz():
     n = 0 # for quiz number labels
     qn = 0 # for quiz calculations
 
+    # creating list of quiz grades
     while n < len(quiz_num):
         current_q = input(f"Grade for Quiz #{quiz_num[n]}: ")
-
         if current_q.isnumeric():
             current_q = float(current_q)
             if 0 <= current_q <= 100:
@@ -29,6 +29,7 @@ def quiz():
         n+=1
         qn+=1
 
+    # quiz grade calculation (stand-alone)
     if len(quizzes) > 0:
         quiz_grade = (sum(quizzes))/(len(quizzes))
         print(f"Quiz grade: {round(quiz_grade,2)}")
@@ -67,6 +68,10 @@ def midterm():
         n += 1
         mn += 1
 
+    # differential midterm grade calculations
+    ## highest midterm score: 25% of overall grade
+    ## middle midterm score: 20% of overall grade
+    ## lowest midterm score: 15% of overall grade
     if len(midterms) > 0:
         midterms_sorted = list(reversed(sorted(midterms)))
         x = 0
@@ -83,10 +88,8 @@ def midterm():
             x += 1
             if x == len(midterms_sorted):
                 break
-        
         print(f"Midterm grade: {round(midterm_grade,2)}")
-        return midterm_grade
-        
+        return midterm_grade  
     else:
         print("No midterm grade available.")   
         return 'n/a'
@@ -95,6 +98,7 @@ def midterm():
 def final():
     final_grade = 0
     n = 0
+
     while n == 0:
         final_grade = input("Final Exam Grade: ")
         if final_grade.isnumeric():
@@ -111,18 +115,19 @@ def final():
             n -= 1
         n += 1
     
-
+# function to calculate weighted average of grade categories (quiz, midterm, final)
 def output():
     quiz_grade = quiz()
     midterm_grade = midterm()
     final_grade = final()
+
     grade_list = [quiz_grade , midterm_grade , final_grade]
     grade_list_a = []
-    grade_total = 0
 
     weight_list = [.15,.6,.25]
     weight_list_a = []
 
+    grade_total = 0
     
     s = 0
     for x in grade_list:
