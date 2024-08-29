@@ -148,7 +148,7 @@ def output():
             n += 1
 
         grade_total = (sum(grade_list_b))/(sum(weight_list_b))
-        print(f"Calculated Grade Average: {grade_total}")
+        print(f"Calculated Grade Average: {round(grade_total, 2)}")
         if grade_total >= 90:
             print("Letter Grade: A")
         elif 80 <= grade_total < 90:
