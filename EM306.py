@@ -149,14 +149,17 @@ def output():
 
         grade_total = (sum(grade_list_b))/(sum(weight_list_b))
         print(f"Calculated Grade Average: {grade_total}")
+        if grade_total >= 90:
+            print("Letter Grade: A")
+        elif 80 <= grade_total < 90:
+            print("Letter Grade: B")
+        elif 65 <= grade_total < 80:
+            print("Letter Grade: C")
+        elif 50 <= grade_total < 65:
+            print("Letter Grade: D")
+        elif grade_total < 50:
+            print("Letter Grade: F")
     else:
         print("No total grade available.")
 
 output()
-
-
-
-
-
-
-
