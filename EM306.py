@@ -159,6 +159,7 @@ def output():
             print("Letter Grade: D")
         elif grade_total < 50:
             print("Letter Grade: F")
+        return grade_total
     else:
         print("No total grade available.")
 
