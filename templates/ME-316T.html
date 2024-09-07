@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ME 316T Calculator</title>
+    <link rel="stylesheet" href="static\style.css">
+</head>
+<body>
+    <h1 class="header text">ME 316T Calculator - Thermodynamics </h1>
+    <p class="text">This is a grade calculator for the course ME 316T with Professor Hall in Fall 2024. 
+        Enter your grades for the assignments as follows. Please be sure to enter your grades 
+        on the 100-point scale for all assignments. For assignments not yet reached, or for 
+        assignments that have passed but will not count towards your final grade, leave the field blank.
+    </p>
+
+    <form action="{{ url_for('views.ME316T')}}" method="post">
+        <div class="box0">
+            <div class="h">Homeworks:<br></div>
+            <input type="text" name="hw1" placeholder="Grade for HW #1" /><br>
+            <input type="text" name="hw2" placeholder="Grade for HW #2" /><br>
+            <input type="text" name="hw3" placeholder="Grade for HW #3" /><br>
+            <input type="text" name="hw4" placeholder="Grade for HW #4" /><br>
+            <input type="text" name="hw5" placeholder="Grade for HW #5" /><br>
+            <input type="text" name="hw6" placeholder="Grade for HW #6" /><br>
+            <input type="text" name="hw7" placeholder="Grade for HW #7" /><br>
+            <input type="text" name="hw8" placeholder="Grade for HW #8" /><br>
+            <input type="text" name="hw9" placeholder="Grade for HW #9" /><br>
+            <input type="text" name="hw10" placeholder="Grade for HW #10" /><br>
+            <input type="text" name="hw11" placeholder="Grade for HW #11" /><br>
+        </div>
+        <div class="box1">
+            <div class="h">Quizzes:<br></div>
+            <input type="text" name="q1" placeholder="Grade for Quiz #1" /><br>
+            <input type="text" name="q2" placeholder="Grade for Quiz #2" /><br>
+            <input type="text" name="q3" placeholder="Grade for Quiz #3" /><br>
+            <input type="text" name="q4" placeholder="Grade for Quiz #4" /><br>
+            <input type="text" name="q5" placeholder="Grade for Quiz #5" /><br>
+            <input type="text" name="q6" placeholder="Grade for Quiz #6" /><br>
+            <input type="text" name="q7" placeholder="Grade for Quiz #7" /><br>
+            <input type="text" name="q8" placeholder="Grade for Quiz #8" /><br>
+            <input type="text" name="q9" placeholder="Grade for Quiz #9" /><br>
+            <input type="text" name="q10" placeholder="Grade for Quiz #10" /><br>
+        </div>
+        <div class="box2">
+            <div class="h">Midterms:<br></div>
+            <input type="text" name="m1" placeholder="Grade for Midterm #1" /><br>
+            <input type="text" name="m2" placeholder="Grade for Midterm #2" /><br>
+            <input type="text" name="m3" placeholder="Grade for Midterm #3" /><br>
+        </div>
+        <div class="box3">
+            <div class="h">Final:<br></div>
+            <input type="text" name="f" placeholder="Grade for Final" /><br>
+            <button type="submit" id="submit">Calculate</button><br>
+        </div>
+    
+    </form>
+
+    <div class="outputs">
+        Homework Average: {{ hw_result_text }}<br>
+        Quiz Average: {{ q_result_text }}<br>
+        Midterm Average: {{ m_result_text }}<br>
+        Course Average: {{ grade_average_text }}<br>
+        Letter Grade: {{ letter_grade_text }}<br>
+    </div>
+
+    <div class="navbar">
+        made by anneke anderson :)
+        <a href="/" class="active">Home</a>
+        <a href="https://github.com/anneke030" class="active" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/annekeanderson/" class="active" target="_blank">LinkedIn</a>
+    </div>
+</body>
+</html>

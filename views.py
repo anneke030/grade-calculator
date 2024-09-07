@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect, request, url_for
 from EM306web import quiz, midterm, final, grade, letter
 from M427Jweb import quiz, midterm, final, grade, letter
+from ME316Tweb import hw, quiz, midterm, final, grade, letter
 from markupsafe import escape
 
 views = Blueprint(__name__,"views")
@@ -116,6 +117,76 @@ def M427J():
         return render_template('M-427J.html', q_result_text=q_result, m_result_text=m_result,grade_average_text=grade_average, letter_grade_text=letter_grade)
     else:
         return render_template('M-427J.html')
+    
+@views.route('/ME-316T', methods=['POST','GET'])
+def ME316T():
+    if request.method == 'POST':
+        hw1 = str(request.form["hw1"])
+        hw2 = str(request.form["hw2"])
+        hw3 = str(request.form["hw3"])
+        hw4 = str(request.form["hw4"])
+        hw5 = str(request.form["hw5"])
+        hw6 = str(request.form["hw6"])
+        hw7 = str(request.form["hw7"])
+        hw8 = str(request.form["hw8"])
+        hw9 = str(request.form["hw9"])
+        hw10 = str(request.form["hw10"])
+        hw11 = str(request.form["hw11"])
+
+        q1 = str(request.form["q1"])
+        q2 = str(request.form["q2"])
+        q3 = str(request.form["q3"])
+        q4 = str(request.form["q4"])
+        q5 = str(request.form["q5"])
+        q6 = str(request.form["q6"])
+        q7 = str(request.form["q7"])
+        q8 = str(request.form["q8"])
+        q9 = str(request.form["q9"])
+        q10 = str(request.form["q10"])
+        
+        m1 = str(request.form["m1"])
+        m2 = str(request.form["m2"])
+        m3 = str(request.form["m3"])
+
+        f = str(request.form['f'])
+
+        hw_result = round(hw(hw1,hw2,hw3,hw4,hw5,hw6,hw7,hw8,hw9,hw10,hw11),2)
+        q_result = round(quiz(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10),2)
+        m_result = round(midterm(m1,m2,m3),2)
+        f_result = round(final(f),2)
+
+        invalid = 'Invalid input; only values between 0 and 100 are acceptable.'
+        nga = 'No Grade Available.'
+
+        grade_average = round(grade(hw_result,q_result, m_result, f_result),2)
+        letter_grade = letter(grade_average)
+        
+        if hw_result == -1:
+            hw_result = invalid
+        elif hw_result == -2:
+            hw_result = nga
+
+        if q_result == -1:
+            q_result = invalid
+        elif q_result == -2:
+            q_result = nga
+
+        if m_result == -1:
+            m_result = invalid
+        elif m_result == -2:
+            m_result = nga
+
+        if f_result == -1:
+            f_result = invalid
+        elif f_result == -2:
+            f_result = nga
+
+        if q_result == m_result == f_result == nga or q_result == m_result == f_result == invalid:
+            grade_average = letter_grade = nga
+        
+        return render_template('ME-316T.html', hw_result_text=hw_result, q_result_text=q_result, m_result_text=m_result,grade_average_text=grade_average, letter_grade_text=letter_grade)
+    else:
+        return render_template('ME-316T.html')
 
 @views.route("/login", methods = ['POST', 'GET'])
 def login():
