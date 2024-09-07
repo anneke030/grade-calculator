@@ -1,5 +1,5 @@
-def quiz(q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13):
-    quiz_list = [q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13]
+def quiz(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10):
+    quiz_list = [q1,q2,q3,q4,q5,q6,q7,q8,q9,q10]
     quiz_list2 = []
     inv = []
     for x in quiz_list:
@@ -22,44 +22,24 @@ def quiz(q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13):
         return -2
 
 
-
 def midterm(m1,m2,m3):
     midterm_list = [m1,m2,m3]
-    midterms_sorted = []
+    midterm_list2 = []
     inv = []
     for x in midterm_list:
         if x.isnumeric():
             x = float(x)
             if x <= 100:
-                midterms_sorted.append(x)
+                midterm_list2.append(x)
             else:
                 inv.append(x)
         elif x == '':
             pass
         else:
             inv.append(x)
-
-    # differential midterm grade calculations
-    ## highest midterm score: 25% of overall grade
-    ## middle midterm score: 20% of overall grade
-    ## lowest midterm score: 15% of overall grade
-    if len(midterms_sorted) > 0 and len(inv) == 0:
-        midterms_sorted = list(reversed(sorted(midterms_sorted)))
-        n = 0
-        while True:
-            midterm_grade = ((midterms_sorted[n])*.25)/.25
-            n += 1
-            if n == len(midterms_sorted):
-                break
-            midterm_grade = (midterm_grade*.25 + (midterms_sorted[n])*.2)/(.45)
-            n += 1
-            if n == len(midterms_sorted):
-                break
-            midterm_grade = (midterm_grade*.45 + (midterms_sorted[n])*.15)/.6
-            n += 1
-            if n == len(midterms_sorted):
-                break
-            return midterm_grade
+    if len(midterm_list2) > 0 and len(inv) == 0:
+        midterm_grade = (sum(midterm_list2))/(len(midterm_list2))
+        return midterm_grade
     elif len(inv) > 0:
         return -1
     else:
@@ -115,13 +95,27 @@ def grade(q_result,m_result,f_result):
         return -2
     
 def letter(grade_average):
-    if 90 <= grade_average <= 100:
+    if 94 <= grade_average <= 100:
         return 'A'
-    elif 80 <= grade_average < 90:
+    elif 90 <= grade_average < 94:
+        return 'A-'
+    elif 87 <= grade_average < 90:
+        return 'B+'
+    elif 84 <= grade_average < 87:
         return 'B'
-    elif 65 <= grade_average < 80:
+    elif 80 <= grade_average < 84:
+        return 'B-'
+    elif 77 <= grade_average < 80:
+        return 'C+'
+    elif 74 <= grade_average < 77:
         return 'C'
-    elif 50 <= grade_average < 65:
+    elif 70 <= grade_average < 74:
+        return 'C-'
+    elif 67 <= grade_average < 70:
+        return 'D+'
+    elif 64 <= grade_average < 67:
         return 'D'
-    elif grade_average < 50:
+    elif 60 <= grade_average < 64:
+        return 'D-'
+    elif grade_average < 60:
         return 'F'

@@ -36,7 +36,7 @@ def quiz():
         return quiz_grade     
     else:
         print("No quiz grade available.")  
-        return 'n/a'
+        return -1
     
 
 def midterm():
@@ -74,7 +74,7 @@ def midterm():
         return midterm_grade     
     else:
         print("No midterm grade available.")  
-        return 'n/a'
+        return -1
     
 
 def final():
@@ -91,7 +91,7 @@ def final():
                 print("The input is invalid. Please enter a grade value between 0 and 100.")
                 n -= 1
         elif final_grade == '' or final_grade == '-':
-            return 'n/a'
+            return -1
         else:
             print("The input is invalid. Please enter a grade value between 0 and 100.")
             n -= 1
@@ -113,7 +113,7 @@ def output():
     
     s = 0
     for x in grade_list:
-        if grade_list[s] != 'n/a':
+        if grade_list[s] != -1:
             grade_list_a.append(grade_list[s])
             weight_list_a.append(weight_list[s])
         else:
