@@ -1,4 +1,4 @@
-Grade Calculator for my Fall 2024 UT Courses
+<h1><strong>Grade Calculator for my Fall 2024 UT Courses</strong></h1>
 
 This application is meant to calculate my semester averages for each of the courses I'm taking in Fall 2024. The calculator is meant to work at any given time in the semester, working only with the inputs (asignment grades) it receives and disregarding empty inputs.<br/>
 <br/>
