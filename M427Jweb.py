@@ -64,7 +64,7 @@ def grade(q_result,m_result,f_result):
         grade_list = [q_result,m_result,f_result]
         grade_list_a = []
 
-        weight_list = [.15,.6,.25]
+        weight_list = [.2,.5,.30]
         weight_list_a = []
 
         grade_total = 0
