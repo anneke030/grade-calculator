@@ -12,8 +12,16 @@
 }
 
 .text {
-    font-size: 18px;
+    font-size: 15px;
     padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: 10px
+}
+
+.index {
+    font-size: 20px;
+    margin: 20px;
 }
 
 .list {
@@ -22,6 +30,39 @@
     margin-left: 30px;
 }
 
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+  }
+
 .header {
-    font-size: 25px;
+    font-size: 40px;
+}
+
+.box1,
+.box2,
+.box3 {
+    padding: 20px;
+    margin: 10px;
+    float: left;
+}
+
+.h {
+    font-size: 20px;
+}
+
+.outputs {
+    font-size: 20px;
+    float: right;
+    border: 10px;
+    padding: 20px;
+}
+
+#submit {
+    text-align: center;
 }
