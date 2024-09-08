@@ -1,7 +1,4 @@
 from flask import Blueprint, render_template, redirect, request, url_for
-from EM306web import quiz, midterm, final, grade, letter
-from M427Jweb import quiz, midterm, final, grade, letter
-from ME316Tweb import hw, quiz, midterm, final, grade, letter
 from markupsafe import escape
 
 views = Blueprint(__name__,"views")
@@ -12,6 +9,7 @@ def index():
 
 @views.route('/EM-306', methods=['POST','GET'])
 def EM306():
+    from EM306web import quiz, midterm, final, grade, letter
     if request.method == 'POST':
         q0 = str(request.form["q0"])
         q1 = str(request.form["q1"])
@@ -68,6 +66,7 @@ def EM306():
     
 @views.route('/M-427J', methods=['POST','GET'])
 def M427J():
+    from M427Jweb import quiz, midterm, final, grade, letter
     if request.method == 'POST':
         q1 = str(request.form["q1"])
         q2 = str(request.form["q2"])
@@ -120,6 +119,7 @@ def M427J():
     
 @views.route('/ME-316T', methods=['POST','GET'])
 def ME316T():
+    from ME316Tweb import hw, quiz, midterm, final, grade, letter
     if request.method == 'POST':
         hw1 = str(request.form["hw1"])
         hw2 = str(request.form["hw2"])
@@ -187,6 +187,74 @@ def ME316T():
         return render_template('ME-316T.html', hw_result_text=hw_result, q_result_text=q_result, m_result_text=m_result,grade_average_text=grade_average, letter_grade_text=letter_grade)
     else:
         return render_template('ME-316T.html')
+
+@views.route('/HIS-315K', methods=['POST','GET'])
+def HIS315K():
+    from HIS315Kweb import lecture, quiz, writing, grade, letter
+    if request.method == 'POST':
+        w1 = str(request.form["w1"])
+        w2 = str(request.form["w2"])
+        w3 = str(request.form["w3"])
+        w4 = str(request.form["w4"])
+        w5 = str(request.form["w5"])
+        w6 = str(request.form["w6"])
+        w7 = str(request.form["w7"])
+        w8 = str(request.form["w8"])
+        w9 = str(request.form["w9"])
+        w10 = str(request.form["w10"])
+        w11 = str(request.form["w11"])
+        w12 = str(request.form["w12"])
+        w13 = str(request.form["w13"])
+        w14 = str(request.form["w14"])
+
+        q1 = str(request.form["q1"])
+        q2 = str(request.form["q2"])
+        q3 = str(request.form["q3"])
+        q4 = str(request.form["q4"])
+        q5 = str(request.form["q5"])
+        q6 = str(request.form["q6"])
+        q7 = str(request.form["q7"])
+        q8 = str(request.form["q8"])
+        q9 = str(request.form["q9"])
+        q10 = str(request.form["q10"])
+        q11 = str(request.form["q11"])
+        q12 = str(request.form["q12"])
+        
+        wr1 = str(request.form["wr1"])
+        wr2 = str(request.form["wr2"])
+        wr3 = str(request.form["wr3"])
+
+        l_result = round(quiz(w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14),2)
+        q_result = round(quiz(q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12),2)
+        wr_result = round(writing(wr1,wr2,wr3),2)
+
+        invalid = 'Invalid input; only values between 0 and 100 are acceptable.'
+        nga = 'No Grade Available.'
+
+        grade_average = round(grade(l_result, q_result, wr_result),2)
+        letter_grade = letter(grade_average)
+        
+        if q_result == -1:
+            q_result = invalid
+        elif q_result == -2:
+            q_result = nga
+
+        if m_result == -1:
+            m_result = invalid
+        elif m_result == -2:
+            m_result = nga
+
+        if wr_result == -1:
+            wr_result = invalid
+        elif wr_result == -2:
+            wr_result = nga
+
+        if l_result == q_result == wr_result == nga or l_result == q_result == wr_result == invalid:
+            grade_average = letter_grade = nga
+        
+        return render_template('HIS-315K.html', l_result_text=l_result, q_result_text=q_result, wr_result_text=wr_result, grade_average_text=grade_average, letter_grade_text=letter_grade)
+    else:
+        return render_template('HIS-315K.html')
 
 @views.route("/login", methods = ['POST', 'GET'])
 def login():
