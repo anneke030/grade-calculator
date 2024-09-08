@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIS 315K Calculator</title>
+    <link rel="stylesheet" href="static\style.css">
+</head>
+<body>
+    <h1 class="header text">HIS 315K Calculator - The United States, 1492-1865</h1>
+    <p class="text">This is a grade calculator for the course HIS 315K with Professor Brands in Fall 2024. 
+        Enter your grades for the assignments as follows. Please be sure to enter your grades 
+        on the 100-point scale for all assignments. For assignments not yet reached, or for 
+        assignments that have passed but will not count towards your final grade, leave the field blank.
+    </p>
+
+    <form action="{{ url_for('views.HIS315K')}}" method="post">
+        <div class="box1">
+            <div class="h">Lectures:<br></div>
+            <input type="text" name="w1" placeholder="Grade for Week #1" /><br>
+            <input type="text" name="w2" placeholder="Grade for Week #2" /><br>
+            <input type="text" name="w3" placeholder="Grade for Week #3" /><br>
+            <input type="text" name="w4" placeholder="Grade for Week #4" /><br>
+            <input type="text" name="w5" placeholder="Grade for Week #5" /><br>
+            <input type="text" name="w6" placeholder="Grade for Week #6" /><br>
+            <input type="text" name="w7" placeholder="Grade for Week #7" /><br>
+            <input type="text" name="w8" placeholder="Grade for Week #8" /><br>
+            <input type="text" name="w9" placeholder="Grade for Week #9" /><br>
+            <input type="text" name="w10" placeholder="Grade for Week #10" /><br>
+            <input type="text" name="w11" placeholder="Grade for Week #11" /><br>
+            <input type="text" name="w12" placeholder="Grade for Week #12" /><br>
+            <input type="text" name="w13" placeholder="Grade for Week #13" /><br>
+            <input type="text" name="w14" placeholder="Grade for Week #14" /><br>
+        </div>
+        <div class="box2">
+            <div class="h">Quizzes:<br></div>
+            <input type="text" name="q1" placeholder="Grade for Quiz #1" /><br>
+            <input type="text" name="q2" placeholder="Grade for Quiz #2" /><br>
+            <input type="text" name="q3" placeholder="Grade for Quiz #3" /><br>
+            <input type="text" name="q4" placeholder="Grade for Quiz #4" /><br>
+            <input type="text" name="q5" placeholder="Grade for Quiz #5" /><br>
+            <input type="text" name="q6" placeholder="Grade for Quiz #6" /><br>
+            <input type="text" name="q7" placeholder="Grade for Quiz #7" /><br>
+            <input type="text" name="q8" placeholder="Grade for Quiz #8" /><br>
+            <input type="text" name="q9" placeholder="Grade for Quiz #9" /><br>
+            <input type="text" name="q10" placeholder="Grade for Quiz #10" /><br>
+            <input type="text" name="q11" placeholder="Grade for Quiz #11" /><br>
+            <input type="text" name="q12" placeholder="Grade for Quiz #12" /><br>
+        </div>
+        <div class="box3">
+            <div class="h">Writings:<br></div>
+            <input type="text" name="wr1" placeholder="Grade for Writing #1" /><br>
+            <input type="text" name="wr2" placeholder="Grade for Writing #2" /><br>
+            <input type="text" name="wr3" placeholder="Grade for Writing #3" /><br>
+            <button type="submit" id="submit">Calculate</button><br>
+        </div>
+    
+    </form>
+
+    <div class="outputs">
+        Lectures Average: {{ l_result_text }}<br>
+        Quiz Average: {{ q_result_text }}<br>
+        Writing Average: {{ wr_result_text }}<br>
+        Course Average: {{ grade_average_text }}<br>
+        Letter Grade: {{ letter_grade_text }}<br>
+    </div>
+
+    <div class="navbar">
+        made by anneke anderson :)
+        <a href="/" class="active">Home</a>
+        <a href="https://github.com/anneke030" class="active" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/annekeanderson/" class="active" target="_blank">LinkedIn</a>
+    </div>
+</body>
+</html>
